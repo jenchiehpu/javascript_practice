@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 320px;
+            height: 568px;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btnStart">開始</button>
+    <button id="btnStop">停止</button>
+    <img src="img2/angry/angry_00.jpg" alt="">
+
+    <script>
+        var img = document.getElementsByTagName("img")[0];
+        var btnStart = document.getElementById("btnStart");
+        var btnStop = document.getElementById("btnStop");
+        var timer = null;
+        var index = 0;
+        btnStart.onclick = function () {
+            if (timer == null) {
+                timer = setInterval(function () {
+                    index++;
+                    if (index == 26) {
+                        index = 0;
+                    }
+                    img.src = "img2/angry/angry_" + format(index, 2) + ".jpg";
+                }, 100);
+            }
+
+        }
+        btnStop.onclick = function () {
+            clearInterval(timer);
+            timer = null;
+        }
+        function format(str, num) {
+            var str = str.toString();
+            if (str.length != num) {
+
+                for (var i = 0; i <= num - str.length; i++) {
+                    str = "0" + str;
+                }
+
+            }
+            return str;
+        }
+    </script>
+</body>
+
+</html>

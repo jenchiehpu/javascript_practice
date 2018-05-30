@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            /* height: 300px; */
+            border: 1px solid gray;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque dolore corrupti, quis labore temporibus, adipisci
+            blanditiis nihil ipsa nam commodi unde. Vitae distinctio neque, non corporis eius soluta nobis ad.</p>
+        <a href="#">收起</a>
+
+    </div>
+    <script>
+        var a = document.getElementsByTagName("a")[0];
+        var p = document.getElementsByTagName("p")[0];
+        p.isShow = true;
+        var str = p.innerHTML;
+        a.onclick = function () {
+            p.isShow = !p.isShow;
+
+            if (p.isShow) {
+                p.innerHTML = str;
+                a.innerHTML = "收起";
+            } else {
+                p.innerHTML = str.substring(0, 20);
+                a.innerHTML = "展開";
+            }
+        }
+    </script>
+</body>
+
+</html>

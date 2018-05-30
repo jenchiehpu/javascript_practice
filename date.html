@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            background: #fc0;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        input {
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" min=1 max=12 placeholder="月">
+    <input type="number" min=1 max=31 placeholder="日">
+    <input type="number" min=0 max=24 placeholder="時">
+    <input type="number" min=0 max=60 placeholder="分">
+    <button id="btn">送出</button>
+    <br>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+
+    <script>
+        var btn = document.getElementById("btn");
+        var input = document.getElementsByTagName("input");
+        var span = document.getElementsByTagName("span");
+        btn.onclick = function () {
+            var time = new Date();
+            time.setMonth(input[0].value - 1);
+            time.setDate(input[1].value);
+            time.setHours(input[2].value);
+            time.setMinutes(input[3].value);
+            var endTime = time.getTime();
+            setInterval(function () {
+                var nowTime = time.getTime();
+
+                var offsetTime = (endTime - nowTime) / 1000;
+                var s = parseInt(offsetTime % 60);
+                var m = parseInt(offsetTime / 60 % 60);
+                var h = parseInt(offsetTime / 60 / 60 % 24);
+                var d = parseInt(offsetTime / 60 / 60 / 24);
+                span[0].innerHTML = d + "days"
+                span[1].innerHTML = h + "hours";
+                span[2].innerHTML = m + "mins";
+                span[3].innerHTML = s + "secs";
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <style>
+        span {
+            background: #f00;
+            color: #fff;
+        }
+    </style>
+    <input type="text" id="iptSearch">
+    <button id="btnSearch">搜尋</button>
+    <br>
+    <input type="text" id="iptReplace">
+    <button id="btnReplace">替換</button>
+
+    <p>就在昨天騎士隊擊敗賽爾提克，確定晉級NBA總冠軍戰的賽後，騎士隊老闆Dan Gilbert表明，不會讓詹姆斯(LeBron James)的未來動向，轉移了冠軍戰的焦點。 Gilbert說：「就像詹姆斯，他一定會說『我們只注意眼前』，我認為這也是事實，我不是避談這個問題，實際上我們就是專注當下。為了進冠軍戰，過程實在太激烈，我們也做到了，我不認為我和他(詹姆斯)，以及其他球員會去談論當前以外的其他事。」
+        詹姆斯下一個球季將價值3560萬美元，他也可以選擇跳脫合約成為自由球員。他上次以騎士球員身分這麼做，得追溯到2010那年夏天，他選擇加入邁阿密熱火，並與騎士隊關係降至冰點， 而詹姆斯的未來動向，只是騎士隊本季眾多不確定因素之一，包括總經理David
+        Griffin的解聘、 交易Kyrie Irving，以及1月時充滿火藥味的球隊會議，甚至是教練Tyronn Lue的健康問題。
+    </p>
+
+    <script>
+        var iptSearch = document.getElementById("iptSearch");
+        var iptReplace = document.getElementById("iptReplace");
+        var btnSearch = document.getElementById("btnSearch");
+        var btnReplace = document.getElementById("btnReplace");
+        var p = document.getElementsByTagName("p")[0];
+        var content = p.innerHTML;
+
+
+        btnReplace.onclick = function () {
+            var oringinalStr = iptSearch.value.trim();
+            var replaceStr = iptReplace.value.trim();
+            if (oringinalStr == "" || replaceStr == "") {
+                alert("請輸入字串");
+            }
+            p.innerHTML = content.split(oringinalStr).join(replaceStr);
+        }
+
+
+        btnSearch.onclick = function () {
+            var colorStyle = "<span>" + iptSearch.value.trim() + "</span>";
+            p.innerHTML = content.split(iptSearch.value).join(colorStyle);
+        }
+    </script>
+</body>
+
+</html>

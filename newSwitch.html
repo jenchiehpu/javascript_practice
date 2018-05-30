@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+        }
+
+        .item li {
+            display: inline-block;
+            width: 30%;
+        }
+
+        .item,
+        .list {
+            width: 400px;
+        }
+
+        .item {
+            background-color: #fc0;
+            height: 50px;
+            line-height: 50px;
+
+        }
+
+        .list {
+            background-color: #ccc;
+        }
+
+        .list ul+ul {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="item">
+        <ul>
+            <li>點擊排行</li>
+            <li>查看排行</li>
+            <li>分享排行</li>
+        </ul>
+
+    </div>
+    <div class="list">
+        <ul>
+            <li>點擊排行1</li>
+            <li>點擊排行2</li>
+            <li>點擊排行3</li>
+            <li>點擊排行4</li>
+            <li>點擊排行5</li>
+            <li>點擊排行6</li>
+            <li>點擊排行7</li>
+            <li>點擊排行8</li>
+        </ul>
+        <ul>
+            <li>查看排行1</li>
+            <li>查看排行2</li>
+            <li>查看排行3</li>
+            <li>查看排行4</li>
+            <li>查看排行5</li>
+        </ul>
+        <ul>
+            <li>分享排行1</li>
+            <li>分享排行2</li>
+            <li>分享排行3</li>
+            <li>分享排行4</li>
+            <li>分享排行5</li>
+            <li>分享排行6</li>
+            <li>分享排行7</li>
+            <li>分享排行8</li>
+            <li>分享排行9</li>
+            <li>分享排行10</li>
+        </ul>
+    </div>
+    <script>
+        var item = document.getElementsByClassName("item")[0];
+        var itemLi = item.getElementsByTagName("li");
+        var list = document.getElementsByClassName("list")[0];
+        var listUl = list.getElementsByTagName("ul");
+        listUl[0].isShow = true;
+        for (var j = 1; j < listUl.length; j++) {
+            listUl[j].isShow = false;
+        }
+
+        for (var i = 0; i < itemLi.length; i++) {
+            itemLi[i].index = i;
+            itemLi[i].onmouseenter = function () {
+                for (var k = 0; k < listUl.length; k++) {
+                    listUl[k].isShow = false;
+                    listUl[k].style.display = "none";
+                }
+                listUl[this.index].isShow = true;
+                listUl[this.index].style.display = "block";
+            }
+
+        }
+    </script>
+</body>
+
+</html>

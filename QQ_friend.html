@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #box {
+            width: 250px;
+            border: 1px solid black;
+            margin: 20px;
+        }
+
+        #box h3 {
+            border: 1px solid black;
+            height: 30px;
+            line-height: 30px;
+            padding-left: 20px;
+
+        }
+
+        ul li {
+            padding-left: 30px;
+            line-height: 30px;
+            border: 1px solid black;
+        }
+
+        .active {
+            background: purple;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="section">
+            <h3>
+                我的好友
+                <span>(3/10)</span>
+            </h3>
+            <ul>
+                <li>好友1</li>
+                <li>好友2</li>
+                <li>好友3</li>
+                <li>好友4</li>
+                <li>好友5</li>
+                <li>好友6</li>
+                <li>好友7</li>
+                <li>好友8</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>
+                我的損友
+                <span>(2/4)</span>
+            </h3>
+            <ul>
+                <li>損友1</li>
+                <li>損友2</li>
+                <li>損友3</li>
+                <li>損友4</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>
+                我的同學
+                <span>(2/4)</span>
+            </h3>
+            <ul>
+                <li>同學1</li>
+                <li>同學2</li>
+                <li>同學3</li>
+                <li>同學4</li>
+                <li>同學4</li>
+                <li>同學4</li>
+                <li>同學4</li>
+                <li>同學4</li>
+                <li>同學4</li>
+
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var section = document.getElementsByClassName("section");
+        var currentLi = null;
+        for (var i = 0; i < section.length; i++) {
+            var oTitle = section[i].getElementsByTagName("h3")[0];
+            oTitle.isShow = true;
+            oTitle.index = i;
+            oTitle.onclick = function () {
+                this.isShow = !this.isShow;
+
+                console.log(this.isShow);
+                var oLists = section[this.index].getElementsByTagName("ul")[0];
+                if (this.isShow) {
+                    oLists.style.display = "block";
+                } else {
+                    oLists.style.display = "none";
+                }
+
+            }
+            var friend = section[i].getElementsByTagName("li");
+            for (var j = 0; j < friend.length; j++) {
+                friend[j].onclick = function () {
+                    if (currentLi) {
+                        currentLi.className = "";
+                    }
+                    currentLi = this;
+                    currentLi.className = "active";
+
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

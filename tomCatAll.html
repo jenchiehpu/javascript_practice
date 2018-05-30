@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <style>
+        div {
+            position: relative;
+            width: 320px;
+            height: 568px;
+        }
+
+        .bigPic {
+            width: 100%;
+            height: 568px;
+        }
+
+        .bt {
+            position: absolute;
+        }
+
+        .bt1 {
+            right: 5px;
+            bottom: 135px;
+        }
+
+        .bt2 {
+            right: 5px;
+            bottom: 65px;
+        }
+
+        .bt3 {
+            right: 5px;
+            bottom: 5px;
+        }
+
+        .bt4 {
+            left: 5px;
+            bottom: 5px;
+        }
+
+        .bt5 {
+            left: 5px;
+            bottom: 65px;
+        }
+
+        .bt6 {
+            left: 5px;
+            bottom: 135px;
+        }
+    </style>
+    <div>
+        <img src="img2/angry/angry_00.jpg" alt="" class="bigPic">
+        <img src="img2/Buttons/cymbal.png" alt="" class="bt bt1">
+        <img src="img2/Buttons/drink.png" alt="" class="bt bt2">
+        <img src="img2/Buttons/eat.png" alt="" class="bt bt3">
+        <img src="img2/Buttons/fart.png" alt="" class="bt bt4">
+        <img src="img2/Buttons/pie.png" alt="" class="bt bt5">
+        <img src="img2/Buttons/scratch.png" alt="" class="bt bt6">
+    </div>
+    <button id="btn">結束動畫</button>
+    <script>
+        var bigPic = document.getElementsByClassName("bigPic")[0];
+        var bt1 = document.getElementsByClassName("bt1")[0];
+        var index = 0;
+        var bt = document.getElementsByClassName("bt");
+        picNum = [12, 80, 39, 27, 23, 55];
+        var num;
+        picStr = ["cymbal", "drink", "eat", "fart", "pie", "scratch"];
+        var str;
+        var timer = null;
+        var btn = document.getElementById("btn");
+        for (var i = 0; i < bt.length; i++) {
+            bt[i].index = i;
+            bt[i].onclick = function () {
+                num = picNum[this.index];
+                str = picStr[this.index];
+                if (timer == null) {
+                    timer = setInterval(function () {
+                        index++;
+                        if (index > num) {
+                            index = 0;
+                        }
+                        bigPic.src = "img2/" + str + "/" + str + "_" + format(index, 2) + ".jpg";
+                    }, 100);
+                }
+            }
+        }
+        btn.onclick = function () {
+            clearInterval(timer);
+            timer = null;
+        }
+        function format(str, num) {
+            var str = str.toString();
+            if (str.length != num) {
+
+                for (var i = 0; i <= num - str.length; i++) {
+                    str = "0" + str;
+                }
+
+            }
+            return str;
+        }
+    </script>
+</body>
+
+</html>
