@@ -82,12 +82,15 @@
 
             }
             img[i].onclick = function () {
-                rating = this.index + 1;
-                for (var j = 0; j <= this.index; j++) {
-                    img[j].style.top = "-30px";
+                if (rating == null) {
+                    rating = this.index + 1;
+                    for (var j = 0; j <= this.index; j++) {
+                        img[j].style.top = "-30px";
+                    }
+
+                    p.innerHTML = "評分為" + rating + "分!!";
                 }
 
-                p.innerHTML = "評分為" + rating + "分!!";
             }
         }
         var btn = document.getElementById("btn");
