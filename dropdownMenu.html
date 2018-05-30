@@ -8,29 +8,50 @@
     <title>Document</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
             list-style: none;
-        }
-
-        ul {
-            width: 400px;
-            height: 30px;
-            margin: 30px auto;
-            background: #777;
-        }
-
-        li {
-            float: left;
-            width: 100px;
-            line-height: 30px;
-            text-align: center;
+            padding: 0;
+            margin: 0;
+            /* outline: 1px solid #f00; */
         }
 
         a {
-            display: block;
             text-decoration: none;
-            color: #fff;
+        }
+
+        li {
+            cursor: pointer;
+            padding: 10px 0;
+        }
+
+        h2 {
+            margin: 50px;
+            text-align: center;
+        }
+
+        .css_dropdown {
+            /* background: #fc0; */
+            font-size: 0px;
+            width: 600px;
+            margin: 50px auto;
+            padding: 20px 0;
+
+        }
+
+        .css_dropdown>li {
+            background: #fc0;
+            display: inline-block;
+            text-align: center;
+            font-size: 18px;
+            width: 200px;
+            vertical-align: top;
+        }
+
+        .css_dropdown ul {
+            display: none;
+        }
+
+        .css_dropdown li:hover ul {
+            display: block;
         }
 
         .active {
@@ -44,11 +65,82 @@
         .content a {
             color: #000;
         }
+
+        .js_dropdown {
+            width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .js_dropdown>li {
+            float: left;
+            width: 200px;
+            background: #fc0;
+        }
+
+        .js_dropdown div a {
+            display: block;
+        }
     </style>
 </head>
 
 <body>
-    <ul>
+    <h2>css製作下拉菜單</h2>
+    <ul class="css_dropdown">
+        <li>
+            <span>index</span>
+            <ul>
+                <li>
+                    <a href="#">Lorem, ipsum.</a>
+                </li>
+                <li>
+                    <a href="#">Lorem, ipsum.</a>
+                </li>
+                <li>
+                    <a href="#">Lorem, ipsum.</a>
+                </li>
+                <li>
+                    <a href="#">Lorem, ipsum.</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span>info</span>
+            <ul>
+                <li>
+                    <a href="#">Lorem, ipsum dolor.</a>
+                </li>
+                <li>
+                    <a href="#">Lorem, ipsum dolor.</a>
+                </li>
+                <li>
+                    <a href="#">Lorem, ipsum dolor.</a>
+                </li>
+                <li>
+                    <a href="#">Lorem, ipsum dolor.</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span>about</span>
+            <ul>
+                <li>
+                    <a href="#">Lorem ipsum dolor sit.</a>
+                </li>
+                <li>
+                    <a href="#">Lorem ipsum dolor sit.</a>
+                </li>
+                <li>
+                    <a href="#">Lorem ipsum dolor sit.</a>
+                </li>
+                <li>
+                    <a href="#">Lorem ipsum dolor sit.</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h2>js製作下拉菜單</h2>
+    <ul class="js_dropdown">
         <li>
             <a href="#" class="nav">首頁</a>
             <div class="content">
@@ -90,8 +182,9 @@
         </li>
     </ul>
     <script>
+        var jsDropdown = document.getElementsByClassName("js_dropdown")[0];
         var content = document.getElementsByClassName("content");
-        var li = document.getElementsByTagName("li");
+        var li = jsDropdown.getElementsByTagName("li");
         for (var i = 0; i < li.length; i++) {
             li[i].index = i;
             li[i].onmouseover = function () {
