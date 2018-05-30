@@ -21,6 +21,11 @@
         input {
             margin-bottom: 50px;
         }
+
+        body {
+            margin-left: 50px;
+            margin-top: 50px;
+        }
     </style>
 </head>
 
@@ -30,7 +35,7 @@
     <input type="number" min=0 max=24 placeholder="時">
     <input type="number" min=0 max=60 placeholder="分">
     <button id="btn">送出</button>
-    <br>
+    <br> 還有
     <span></span>
     <span></span>
     <span></span>
@@ -49,8 +54,8 @@
             time.setMinutes(input[3].value);
             var endTime = time.getTime();
             setInterval(function () {
-                var nowTime = time.getTime();
-
+                var nowTime = new Date();
+                nowTime = nowTime.getTime();
                 var offsetTime = (endTime - nowTime) / 1000;
                 var s = parseInt(offsetTime % 60);
                 var m = parseInt(offsetTime / 60 % 60);
