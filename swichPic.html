@@ -12,7 +12,7 @@
             height: 200px;
             float: left;
             margin: 10px;
-            background-image: url(icon.png);
+            background-image: url(curry.jpg);
         }
     </style>
 </head>
@@ -32,11 +32,10 @@
     <script>
         var bt = document.getElementsByClassName("bt");
         for (var i = 0; i < bt.length; i++) {
-            bt[i].src = "icon";
             bt[i].isShow = true;
             bt[i].onclick = function () {
                 this.isShow = !this.isShow;
-                this.style.backgroundImage = this.isShow ? "url(icon.png)" : "url(i.png)";
+                this.style.backgroundImage = this.isShow ? "url(curry.jpg)" : "url(lbj.jpg)";
             }
         }
     </script>

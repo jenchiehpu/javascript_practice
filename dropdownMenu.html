@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            width: 400px;
+            height: 30px;
+            margin: 30px auto;
+            background: #777;
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .active {
+            background: #f00;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content a {
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="#" class="nav">首頁</a>
+            <div class="content">
+                <a href="#">首頁1</a>
+                <a href="#">首頁2</a>
+                <a href="#">首頁3</a>
+                <a href="#">首頁4</a>
+                <a href="#">首頁5</a>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="nav">聯繫</a>
+            <div class="content">
+                <a href="#">聯繫1</a>
+                <a href="#">聯繫2</a>
+                <a href="#">聯繫3</a>
+                <a href="#">聯繫4</a>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="nav">案例</a>
+            <div class="content">
+                <a href="#">案例1</a>
+                <a href="#">案例2</a>
+                <a href="#">案例3</a>
+                <a href="#">案例4</a>
+                <a href="#">案例5</a>
+                <a href="#">案例6</a>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="nav">關於</a>
+            <div class="content">
+                <a href="#">關於1</a>
+                <a href="#">關於2</a>
+                <a href="#">關於3</a>
+                <a href="#">關於4</a>
+            </div>
+        </li>
+    </ul>
+    <script>
+        var content = document.getElementsByClassName("content");
+        var li = document.getElementsByTagName("li");
+        for (var i = 0; i < li.length; i++) {
+            li[i].index = i;
+            li[i].onmouseover = function () {
+                this.className = "active"
+                content[this.index].style.display = "block";
+            }
+            li[i].onmouseout = function () {
+                this.className = "";
+                content[this.index].style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

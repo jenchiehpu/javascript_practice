@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="section" id="box" data-index=5 data-isShow="true">
+        hello world!!!
+    </div>
+
+    <script>
+        var oBox = document.getElementById("box");
+
+        // console.log(oBox.attributes[1].nodeValue);
+        oBox.tab = 10;
+        // console.log(oBox.attributes["tab"].nodeValue);
+        // console.log(oBox.tab);
+        console.log(oBox.getAttribute("data-index"));
+        console.log(oBox.getAttribute("tab"));
+        console.log(oBox.ttad);
+
+
+    </script>
+</body>
+
+</html>
