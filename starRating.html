@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            font-size: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+            height: 28px;
+            width: 27px;
+            overflow: hidden;
+        }
+
+        img {
+            position: absolute;
+            top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        請給分數，點選分數星星，最左邊為1分，最右邊為5分。
+    </p>
+    <ul>
+        <li>
+            <img src="star.gif" alt="">
+        </li>
+        <li>
+            <img src="star.gif" alt="">
+        </li>
+        <li>
+            <img src="star.gif" alt="">
+        </li>
+        <li>
+            <img src="star.gif" alt="">
+        </li>
+        <li>
+            <img src="star.gif" alt="">
+        </li>
+    </ul>
+    <button id="btn">重新評分</button>
+    <p></p>
+
+    <script>
+        var img = document.getElementsByTagName("img");
+        var p = document.getElementsByTagName("p")[1];
+        for (var i = 0; i < img.length; i++) {
+
+
+            var rating = null;
+            img[i].index = i;
+
+            img[i].onmouseenter = function () {
+                if (rating == null) {
+                    for (var j = 0; j < img.length; j++) {
+                        if (j <= this.index) {
+                            img[j].style.top = "-30px";
+                        } else {
+                            img[j].style.top = "0px";
+                        }
+                    }
+
+                }
+            }
+            img[i].onmouseout = function () {
+                // 是否評分
+                if (rating == null) {
+                    for (var j = 0; j <= this.index; j++) {
+                        img[j].style.top = "0px";
+                    }
+                }
+
+            }
+            img[i].onclick = function () {
+                rating = this.index + 1;
+                for (var j = 0; j <= this.index; j++) {
+                    img[j].style.top = "-30px";
+                }
+
+                p.innerHTML = "評分為" + rating + "分!!";
+            }
+        }
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            for (var i = 0; i < img.length; i++) {
+                img[i].style.top = "0px";
+            }
+            p.innerHTML = "";
+            rating = null;
+        }
+    </script>
+</body>
+
+</html>
