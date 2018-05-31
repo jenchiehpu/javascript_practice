@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .socialMedia {
+            width: 100px;
+            background: #f00;
+            height: 120px;
+            padding-left: 10px;
+            display: inline-block;
+            vertical-align: top;
+
+        }
+
+        .socialMedia a {
+            display: block;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            line-height: 30px;
+            display: block;
+
+        }
+
+        .shareLink {
+            width: 20px;
+            height: 80px;
+            background: #00f;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            margin-left: -4px;
+        }
+
+        .box {
+            position: absolute;
+            top: 200px;
+            left: -110px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="socialMedia">
+            <a href="">facebook</a>
+            <a href="">twitter</a>
+            <a href="">weibo</a>
+            <a href="">微信</a>
+        </div>
+        <div class="shareLink">
+            分享到
+        </div>
+    </div>
+
+    <script>
+        var shareLink = document.getElementsByClassName("shareLink")[0];
+        var socialMedia = document.getElementsByClassName("socialMedia")[0];
+        var box = document.getElementsByClassName("box")[0];
+        // box.onmouseenter = function () {
+        //     box.style.left = "0px";
+        // }
+        box.onmouseover = function () {
+            box.style.left = "0px";
+        }
+        // box.onmouseleave = function () {
+        //     box.style.left = "-110px";
+        // }
+        box.onmouseout = function () {
+            box.style.left = "-110px";
+        }
+
+    </script>
+</body>
+
+</html>
