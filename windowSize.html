@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 1000px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p>窗口寬度：
+        <span></span>
+    </p>
+    <p>窗口高度：
+        <span></span>
+    </p>
+
+    <script>
+        var span = document.getElementsByTagName("span");
+        var i = 0;
+        window.onresize = function () {
+            document.title = "i:" + i++;
+            span[0].innerHTML = document.documentElement.clientWidth + "px";
+            span[1].innerHTML = document.documentElement.clientHeight + "px";
+        }
+        var j = 0;
+        window.onscroll = function () {
+            document.title = "j:" + j++;
+        }
+
+    </script>
+</body>
+
+</html>
