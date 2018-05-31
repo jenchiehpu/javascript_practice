@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            margin: 10px;
+        }
+
+        input {
+            width: 300px;
+            height: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="webLink" placeholder="請輸入想打開的網址 例如:yahoo.com.tw">
+    <br>
+    <button id="btnOpen">打開</button>
+    <button id="btnClose">關閉</button>
+
+    <script>
+        var btnOpen = document.getElementById("btnOpen");
+        var btnClose = document.getElementById("btnClose");
+        var webLink = document.getElementById("webLink");
+        var oW = null;
+        btnOpen.onclick = function () {
+            if (webLink.value.trim() == "") {
+                alert("請輸入網址");
+            } else {
+                if (webLink.value.trim().indexOf("http://") == 0 || webLink.value.trim().indexOf("https://") == 0) {
+                    oW = window.open(webLink.value.trim());
+                } else {
+                    var str = "http://" + webLink.value.trim();
+                    oW = window.open(str, "_blank");
+                }
+            }
+        }
+        btnClose.onclick = function () {
+            oW.close();
+        }
+        console.log(window.navigator.userAgent);
+    </script>
+</body>
+
+</html>
