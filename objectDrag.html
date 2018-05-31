@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        box.onmousedown = function () {
+            document.onmousemove = function (e) {
+                box.style.marginLeft = e.clientX - 100 + "px";
+                box.style.marginTop = e.clientY - 100 + "px";
+            }
+            box.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+
+</html>
