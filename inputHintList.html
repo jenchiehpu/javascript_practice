@@ -31,7 +31,6 @@
             border: 2px solid #ccc;
             border-top: none;
             display: none;
-
         }
 
         li {
@@ -65,17 +64,34 @@
                 oUl.style.display = "none";
             }, 200)
         }
-        for (var i = 0; i < aLi.length; i++) {
-            aLi[i].onmouseenter = function () {
-                this.style.background = "#777";
-            }
-            aLi[i].onmouseout = function () {
-                this.style.background = "";
-            }
-            aLi[i].onclick = function () {
-                oInput.value = this.innerHTML;
+        // for (var i = 0; i < aLi.length; i++) {
+        //     aLi[i].onmouseenter = function () {
+        //         this.style.background = "#777";
+        //     }
+        //     aLi[i].onmouseout = function () {
+        //         this.style.background = "";
+        //     }
+        //     aLi[i].onclick = function () {
+        //         oInput.value = this.innerHTML;
+        //     }
+        // }
+
+        oUl.onmousemove = function (e) {
+            if (e.target.nodeName == "LI") {
+                e.target.style.background = "#ccc";
             }
         }
+        oUl.onmouseout = function (e) {
+            if (e.target.nodeName == "LI") {
+                e.target.style.background = "";
+            }
+        }
+        oUl.onclick = function (e) {
+            if (e.target.nodeName == "LI") {
+                oInput.value = e.target.innerHTML;
+            }
+        }
+
 
 
 
