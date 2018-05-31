@@ -53,6 +53,12 @@
     <p>黃色矩形長度:
         <span></span>
     </p>
+    <p>滑鼠X座標:
+        <span></span>
+    </p>
+    <p>滑鼠Y座標:
+        <span></span>
+    </p>
 
     <script>
         var item = document.getElementsByClassName("item")[0];
@@ -72,6 +78,10 @@
 
         window.onscroll = function () {
             document.title = "j:" + j++;
+        }
+        document.onmousemove = function (e) {
+            span[6].innerHTML = e.clientX;
+            span[7].innerHTML = e.clientY;
         }
 
 
