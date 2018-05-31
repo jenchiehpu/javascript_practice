@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        div {
+            width: 500px;
+            margin: 50px auto;
+        }
+
+        input {
+            width: 280px;
+            height: 30px;
+            padding: 10px;
+            border: 2px solid #000;
+            font-size: 18px;
+        }
+
+        ul {
+            width: 300px;
+            border: 2px solid #ccc;
+            border-top: none;
+            display: none;
+
+        }
+
+        li {
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="請輸入搜尋資料">
+        <ul>
+            <li>java</li>
+            <li>javascript</li>
+            <li>javascript大全</li>
+            <li>jscript</li>
+            <li>reactjs</li>
+        </ul>
+    </div>
+    <script>
+        var oUl = document.getElementsByTagName("ul")[0];
+        var aLi = document.getElementsByTagName("li");
+        var oInput = document.getElementsByTagName("input")[0];
+        oInput.onfocus = function () {
+            oUl.style.display = "block";
+        }
+        oInput.onblur = function () {
+            setTimeout(function () {
+                oUl.style.display = "none";
+            }, 200)
+        }
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onmouseenter = function () {
+                this.style.background = "#777";
+            }
+            aLi[i].onmouseout = function () {
+                this.style.background = "";
+            }
+            aLi[i].onclick = function () {
+                oInput.value = this.innerHTML;
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
