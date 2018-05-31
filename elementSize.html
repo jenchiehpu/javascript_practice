@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            padding-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        .item {
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            overflow: auto;
+            border: 3px solid #000;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+
+        span {
+            color: #f00;
+            display: block;
+        }
+
+        li {
+            margin-bottom: 30px;
+            margin-left: 30px;
+        }
+
+        .itemWidth {
+            color: #00f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque cum harum voluptatem tempora dolor cupiditate eius
+            aliquid, quibusdam quas quod deserunt qui aperiam. Quia repellendus tenetur consectetur dolore obcaecati, repellat
+            voluptatem modi aut ipsum ipsam amet, natus, ea laudantium deleniti sapiente temporibus inventore nam. Deserunt
+            amet dolor, nobis nostrum in saepe quas fugit assumenda architecto, vel illum atque veniam, numquam suscipit
+            explicabo cumque nihil! Voluptatem delectus, debitis maxime officiis fugiat aspernatur exercitationem cum totam
+            suscipit saepe neque voluptatum quas eum minima explicabo corrupti soluta veritatis voluptates dignissimos? Vel,
+            optio consectetur, quae officiis distinctio excepturi obcaecati numquam perferendis ut a consequuntur?</div>
+    </div>
+    <ul>
+        <li>透過style取得元素大小</li>
+        <span class="itemWidth"></span>
+        <li>透過計算取得元素大小
+            <span>getComputedStyle</span>
+            <span class="itemWidth"></span>
+            <span class="itemWidth"></span>
+        </li>
+        <li>透過clientWidth取得元素大小
+            <span>獲取元素可視化區域 width+padding</span>
+            <span class="itemWidth"></span>
+            <span class="itemWidth"></span>
+        </li>
+        <li>透過offsetWidth取得元素大小
+            <span>元素實際佔位大小 width+padding+border</span>
+            <span class="itemWidth"></span>
+            <span class="itemWidth"></span>
+        </li>
+        <li>透過scrollHeight取得元素滾動內容
+            <span>滾動內容大小 </span>
+            <span class="itemWidth"></span>
+        </li>
+        <li>透過clientLeft取得元素左邊邊框大小
+            <span class="itemWidth"></span>
+            <span class="itemWidth"></span>
+        </li>
+        <li>透過offsetTop取得元素相對父元素位置
+            <span class="itemWidth"></span>
+            <span class="itemWidth"></span>
+        </li>
+    </ul>
+    <script>
+        var box = document.getElementsByClassName("box")[0];
+        var item = document.getElementsByClassName("item")[0];
+        var itemWidth = document.getElementsByClassName("itemWidth");
+        itemWidth[1].innerHTML = "寬度：" + getComputedStyle(item).width;
+        itemWidth[2].innerHTML = "高度：" + getComputedStyle(item).height;
+        itemWidth[3].innerHTML = "寬度：" + item.clientWidth;
+        itemWidth[4].innerHTML = "高度：" + item.clientHeight;
+        itemWidth[5].innerHTML = "寬度：" + item.offsetWidth;
+        itemWidth[6].innerHTML = "高度：" + item.offsetHeight;
+        itemWidth[7].innerHTML = "高度：" + item.scrollHeight;
+        itemWidth[8].innerHTML = "左邊框：" + item.clientLeft;
+        itemWidth[9].innerHTML = "右邊框：" + (item.offsetWidth - item.clientWidth - item.clientLeft);
+        itemWidth[10].innerHTML = "距離父元素高度：" + item.offsetTop;
+        itemWidth[11].innerHTML = "距離父元素左邊：" + item.offsetLeft;
+        console.log(item.offsetTop);
+        console.log(box.offsetTop);
+    </script>
+</body>
+
+</html>
