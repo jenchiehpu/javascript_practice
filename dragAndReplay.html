@@ -73,23 +73,22 @@
         }
         btn.onclick = function (e) {
             e.stopPropagation();
-
-            var temp = [];
-
-            timer = setInterval(function () {
-                temp = arr.pop();
-                if (temp != null) {
-                    item.style.left = (temp[0] - x) + "px";
-                    item.style.top = (temp[1] - y) + "px";
-
-                } else {
-                    console.log('cancel');
-                    clearInterval(timer);
-                    timer = null;
-                }
-
-            }, 50);
-
+            if (arr.length == 0) {
+                alert("無歷史軌跡紀錄");
+            } else {
+                var temp = [];
+                timer = setInterval(function () {
+                    temp = arr.pop();
+                    if (temp != null) {
+                        item.style.left = (temp[0] - x) + "px";
+                        item.style.top = (temp[1] - y) + "px";
+                    } else {
+                        clearInterval(timer);
+                        timer = null;
+                        console.log(arr.length);
+                    }
+                }, 50);
+            }
         }
     </script>
 </body>
