@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .item {
+            width: 200px;
+            padding: 10px;
+            background: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 6px;
+        }
+
+        a,
+        p,
+        span {
+            color: #fff;
+        }
+
+        a {
+            border-bottom: 1px dotted #fff;
+            display: block;
+            text-align: right;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="item">
+        <button id="btn">軌跡回放</button>
+        <p>X座標:
+            <span></span>
+        </p>
+        <p>Y座標:
+            <span></span>
+        </p>
+    </div>
+
+    <script>
+        var item = document.getElementsByClassName("item")[0];
+        var span = document.getElementsByTagName("span");
+        var btn = document.getElementById("btn");
+        var arr = [];
+        var timer = null;
+        item.onmousedown = function (e) {
+            initialX = e.clientX;
+            initialY = e.clientY;
+            console.log(e.clientX);
+            console.log(e.clientY);
+            document.onmousemove = function (e) {
+                x = initialX;
+                y = initialY;
+                arr.push([e.clientX, e.clientY]);
+
+                item.style.left = e.clientX - initialX + "px";
+                item.style.top = e.clientY - initialY + "px";
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                }
+            }
+        }
+        btn.onclick = function (e) {
+            e.stopPropagation();
+
+            var temp = [];
+
+            timer = setInterval(function () {
+                temp = arr.pop();
+                if (temp != null) {
+                    item.style.left = (temp[0] - x) + "px";
+                    item.style.top = (temp[1] - y) + "px";
+
+                } else {
+                    console.log('cancel');
+                    clearInterval(timer);
+                    timer = null;
+                }
+
+            }, 50);
+
+        }
+    </script>
+</body>
+
+</html>
