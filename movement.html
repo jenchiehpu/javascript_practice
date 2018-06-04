@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            position: absolute;
+            top: 200px;
+            left: 0px;
+        }
+
+        .line {
+            width: 2px;
+            height: 500px;
+            background-color: #000;
+            position: absolute;
+            top: 200px;
+            left: 300px;
+        }
+
+        input {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="每0.1秒移動多少px 預設為5px" id="speedRate">
+    <br>
+    <input type="text" placeholder="移動多少px就停止？ 預設為300px" id="distance">
+    <br>
+    <button id="btn">移動</button>
+    <br>
+    <button id="stopMovement">停止</button>
+    <br>
+    <button id="reset">重新來過</button>
+    <div class="box"></div>
+    <div class="line"></div>
+    <script>
+        var btn = document.getElementById("btn");
+        var stopMovement = document.getElementById("stopMovement");
+        var box = document.getElementsByClassName("box")[0];
+        var reset = document.getElementById("reset");
+        var line = document.getElementsByClassName("line")[0];
+        var timer = null;
+        var oSpeed = document.getElementById("speedRate");
+        var oDistance = document.getElementById("distance");
+        btn.onclick = function () {
+            var speed = parseInt(oSpeed.value) || 5;
+            var distance = parseInt(oDistance.value) || parseInt(getComputedStyle(line).left);
+            line.style.left = distance + "px";
+            clearInterval(timer);
+            timer = null;
+            timer = setInterval(function () {
+                if (box.offsetLeft >= distance) {
+                    clearInterval(timer);
+                } else {
+                    box.style.left = box.offsetLeft + speed + "px";
+                    console.log(parseInt(box.style.left));
+                }
+            }, 100)
+        }
+        stopMovement.onclick = function () {
+            clearInterval(timer);
+            timer = null;
+        }
+        reset.onclick = function () {
+            box.style.left = "0px";
+        }
+    </script>
+</body>
+
+</html>
