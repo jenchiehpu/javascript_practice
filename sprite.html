@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .flexbox {
+            display: flex;
+        }
+
+        .flexbox>div {
+            margin: 10px;
+        }
+
+        .num {
+            width: 40px;
+            height: 40px;
+            object-fit: none;
+            object-position: 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flexbox">
+        <div>
+            <span>原圖</span>
+            <br>
+            <img src="icons-ol.png" alt="">
+
+        </div>
+        <div>
+            <p>運用objectFit和objectPosition</p>
+            <input type="text" placeholder="請輸入三位數字">
+            <button id="btn">確認</button>
+            <br>
+            <img src="img/icons-ol.png" alt="" class="num num1">
+            <img src="img/icons-ol.png" alt="" class="num num2">
+            <img src="img/icons-ol.png" alt="" class="num num3">
+        </div>
+
+    </div>
+    <script>
+        var oInput = document.getElementsByTagName("input")[0];
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            var str = parseInt(oInput.value).toString();
+            var length = parseInt(oInput.value).toString().length;
+            if (length < 3) {
+                var diff = 3 - length;
+                for (var i = 0; i <= diff; i++) {
+                    str = "0" + str;
+                }
+            }
+            var num1 = document.getElementsByClassName("num1")[0];
+            var num2 = document.getElementsByClassName("num2")[0];
+            var num3 = document.getElementsByClassName("num3")[0];
+            num1.style.objectPosition = "0 " + -1 * str[0] * 40 + "px";
+            num2.style.objectPosition = "0 " + -1 * str[1] * 40 + "px";
+            num3.style.objectPosition = "0 " + -1 * str[2] * 40 + "px";
+        }
+    </script>
+</body>
+
+</html>
