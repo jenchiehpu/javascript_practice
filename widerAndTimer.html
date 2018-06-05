@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 50px;
+            background-color: #f00;
+            margin: 20px;
+        }
+
+        .box1 {
+            margin-bottom: 100px;
+            background-color: #ccc;
+        }
+
+        .improvebox {
+            width: 100px;
+            height: 50px;
+            background-color: #00f;
+            margin: 20px;
+        }
+
+        .container {
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>正常的效果 移入會變寬 移出會恢復原寬度</p>
+    <div class="box box1"></div>
+    <p>快速移入移出各紅色時矩形時會產生干擾</p>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <p>改良後 各舉行有各自的定時器</p>
+    <div>
+        <div class="improvebox"></div>
+        <div class="improvebox"></div>
+        <div class="improvebox"></div>
+        <div class="improvebox"></div>
+
+    </div>
+
+
+
+    <script>
+        var box = document.getElementsByClassName("box");
+        var timer = null;
+        var ibox = document.getElementsByClassName("improvebox");
+        for (var i = 0; i < ibox.length; i++) {
+            ibox[i].onmouseover = function () {
+                iStartMove(this, 500, 50);
+            }
+            ibox[i].onmouseout = function () {
+                iStartMove(this, 100, 50);
+            }
+            ibox[i].timer = null;
+        }
+        for (var i = 0; i < box.length; i++) {
+            box[i].onmouseover = function () {
+                startMove(this, 500, 50);
+            }
+            box[i].onmouseout = function () {
+                startMove(this, 100, 50);
+            }
+        }
+
+        function startMove(obj, target, speed) {
+            clearInterval(timer);
+            if (obj.offsetWidth > target) {
+                speed *= -1;
+                timer = setInterval(function () {
+                    if (obj.offsetWidth == target) {
+                        clearInterval(timer);
+                    } else {
+                        obj.style.width = obj.offsetWidth + speed + "px";
+                        console.log(obj.offsetWidth);
+                    }
+                }, 100)
+            } else {
+
+                timer = setInterval(function () {
+                    if (obj.offsetWidth == target) {
+                        clearInterval(timer);
+                    } else {
+                        obj.style.width = obj.offsetWidth + speed + "px";
+                        console.log(obj.offsetWidth);
+                    }
+                }, 100)
+            }
+
+        }
+        function iStartMove(obj, target, speed) {
+            clearInterval(obj.timer);
+            if (obj.offsetWidth > target) {
+                speed *= -1;
+                obj.timer = setInterval(function () {
+                    if (obj.offsetWidth == target) {
+                        clearInterval(obj.timer);
+                    } else {
+                        obj.style.width = obj.offsetWidth + speed + "px";
+                        console.log(obj.offsetWidth);
+                    }
+                }, 100)
+            } else {
+
+                obj.timer = setInterval(function () {
+                    if (obj.offsetWidth == target) {
+                        clearInterval(obj.timer);
+                    } else {
+                        obj.style.width = obj.offsetWidth + speed + "px";
+                        console.log(obj.offsetWidth);
+                    }
+                }, 100)
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
