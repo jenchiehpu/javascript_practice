@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        var box = document.getElementsByClassName("box")[0];
+        box.onclick = function () {
+            packaging(this, "width", 400);
+            console.log(111);
+        }
+
+
+
+        function packaging(obj, attribute, target) {
+            clearInterval(obj.timer);
+            var currentValue = parseInt(getComputedStyle(obj).attribute);
+            var speed;
+            obj.timer = setInterval(function () {
+                if (target == currentValue) {
+                    clearInterval(obj.timer);
+                } else {
+                    speed = (target - currentValue) / 7;
+                    obj.style.attribute = currentValue + speed + "px";
+                }
+            }, 300)
+        }
+    </script>
+</body>
+
+</html>
