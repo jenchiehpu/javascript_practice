@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        ul {
+            width: 920px;
+            height: 170px;
+            margin: 30px auto;
+        }
+
+        li {
+            width: 300px;
+            height: 170px;
+            float: left;
+            position: relative;
+        }
+
+        li p {
+            position: absolute;
+            width: 290px;
+            left: 5px;
+            background-color: gray;
+            color: #fff;
+            bottom: 0px;
+            font-size: 12px;
+            text-align: center;
+            height: 0;
+            overflow: hidden;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        img {
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="#">
+                <img src="img/b1.jpg" alt="">
+                <p>Lorem.</p>
+            </a>
+        </li>
+        <li style="margin:0 10px;">
+            <a href="#">
+                <img src="img/b2.jpg" alt="">
+                <p>Lorem, ipsum.</p>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="img/b3.jpg" alt="">
+                <p>Lorem, ipsum dolor.</p>
+            </a>
+        </li>
+    </ul>
+    <script>
+        var aLi = document.getElementsByTagName("li");
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onmouseover = function () {
+                var obj = this.getElementsByTagName("p")[0];
+                packaging(obj, "height", 50);
+            }
+            aLi[i].onmouseout = function () {
+                var obj = this.getElementsByTagName("p")[0];
+                packaging(obj, "height", 0);
+            }
+        }
+
+
+        function packaging(obj, attribute, target) {
+            clearInterval(obj.timer);
+
+            obj.timer = setInterval(function () {
+                var currentValue = parseInt(getComputedStyle(obj)[attribute]);
+                var speed;
+                if (target == currentValue) {
+                    clearInterval(obj.timer);
+                } else {
+                    speed = (target - currentValue) / 7;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    obj.style[attribute] = currentValue + speed + "px";
+                    console.log(1111);
+                }
+            }, 50)
+        }
+    </script>
+</body>
+
+</html>

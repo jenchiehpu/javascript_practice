@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        @media screen and (min-width:800px) {
+
+            .container {
+                /* box-sizing: border-box; */
+                display: grid;
+                width: 600px;
+                height: 400px;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 200px 200px;
+                grid-template-areas: "A A B" "C D B";
+                margin: 0 auto;
+                border: 1px solid #000;
+            }
+
+            .a {
+                grid-area: A;
+                background-color: #f00;
+            }
+
+            .b {
+                grid-area: B;
+                background-color: #0f0;
+            }
+
+            .c {
+                grid-area: C;
+                background-color: #00f;
+            }
+
+            .d {
+                grid-area: D;
+                background-color: #fc0;
+            }
+        }
+
+        @media screen and (min-width:1200px) {
+            .container {
+                /* box-sizing: border-box; */
+                display: grid;
+                width: 600px;
+                height: 600px;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 200px 200px 200px;
+                grid-template-areas: "A A C" "B B C" "B D D";
+                margin: 0 auto;
+                border: 1px solid #000;
+            }
+
+            .a {
+                box-sizing: border-box;
+                border: 1px solid #000;
+                grid-column: 1/3;
+                grid-row: 1/2;
+                /* background-color: #f00; */
+            }
+
+            .b {
+                box-sizing: border-box;
+                border: 1px solid #000;
+                grid-column: 1/3;
+                grid-row: 2/4;
+                /* background-color: #0f0; */
+            }
+
+            .c {
+                box-sizing: border-box;
+                border: 1px solid #000;
+                grid-column: 3;
+                grid-row: 1/3;
+                /* background-color: #00f; */
+            }
+
+            .d {
+                box-sizing: border-box;
+                border: 1px solid #000;
+                grid-column: 2/4;
+                grid-row: 3;
+                /* background-color: #fc0; */
+            }
+        }
+
+        .c .item {
+            background-color: #000;
+            margin: 10px;
+            height: 50px;
+        }
+
+        .b .item {
+            width: 20px;
+            height: 20px;
+            margin: 10px;
+            border: 2px solid #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="a">頭條</div>
+        <div class="b">side
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <div class="c">其他歌手
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <div class="d">追蹤</div>
+    </div>
+</body>
+
+</html>

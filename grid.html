@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 200px 50px auto 50px 200px;
+            grid-template-rows: 25% 100px auto;
+            width: 940px;
+            height: 100vh;
+            margin: 0 auto;
+            grid-template-areas: "header header header header header" "side main main main main" "side footer footer footer footer"
+        }
+
+        .item-a {
+            grid-area: header;
+            background-color: purple;
+        }
+
+        ul li {
+            display: inline-block;
+        }
+
+        .item-b {
+            grid-area: main;
+            background-color: orange;
+        }
+
+        .item-c {
+            grid-area: side;
+            background-color: green;
+        }
+
+        .item-d {
+            grid-area: footer;
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item-a">
+            <ul>
+                <li>
+                    <a href="#">首頁1</a>
+                </li>
+                <li>
+                    <a href="#">首頁2</a>
+                </li>
+                <li>
+                    <a href="#">首頁3</a>
+                </li>
+                <li>
+                    <a href="#">首頁4</a>
+                </li>
+                <li>
+                    <a href="#">首頁5</a>
+                </li>
+            </ul>
+        </div>
+        <div class="item-b">side</div>
+        <div class="item-c">main</div>
+        <div class="item-d">footer</div>
+    </div>
+</body>
+
+</html>
