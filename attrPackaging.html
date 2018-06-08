@@ -11,33 +11,68 @@
             width: 100px;
             height: 100px;
             background-color: #f00;
+            position: absolute;
+            left: 10;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        #attr {
+            height: 30px;
+        }
+
+        #v {
+            width: 350px;
+            height: 30px;
         }
     </style>
 </head>
 
 <body>
-    <div class="box"></div>
+    <p>填入你想要改變的屬性和值</p>
+    <select name="attr" id="attr">
+        <option value="width">寬度</option>
+        <option value="height">高度</option>
+        <option value="fontSize">字體大小</option>
+        <option value="left">離左邊距離</option>
+    </select>
+    <br>
+    <br>
+    <input type="number" id="v" placeholder="想改變的值 不需要填單位 例如:200">
+    <br>
+    <br>
+    <button id="btn">送出</button>
+    <br>
+    <br>
+    <div class="box">哈哈哈</div>
     <script>
         var box = document.getElementsByClassName("box")[0];
-        box.onclick = function () {
-            packaging(this, "width", 400);
-            console.log(111);
+        var btn = document.getElementById("btn");
+        var attr = document.getElementById("attr");
+        var v = document.getElementById("v");
+        btn.onclick = function () {
+            if (attr.value == "" || v.value == "") {
+                alert("請輸入屬性或值");
+            } else {
+                v.value = parseInt(v.value);
+                packaging(box, attr.value, v.value);
+            }
         }
-
-
-
         function packaging(obj, attribute, target) {
             clearInterval(obj.timer);
-            var currentValue = parseInt(getComputedStyle(obj).attribute);
-            var speed;
+
             obj.timer = setInterval(function () {
+                var currentValue = parseInt(getComputedStyle(obj)[attribute]);
+                var speed;
                 if (target == currentValue) {
                     clearInterval(obj.timer);
                 } else {
                     speed = (target - currentValue) / 7;
-                    obj.style.attribute = currentValue + speed + "px";
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    obj.style[attribute] = currentValue + speed + "px";
+                    console.log(1111);
                 }
-            }, 300)
+            }, 50)
         }
     </script>
 </body>
