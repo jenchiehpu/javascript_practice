@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cal {
+            width: 500px;
+            margin: 50px auto;
+        }
+
+        .gridBox {
+            display: grid;
+            grid-template: repeat(4, 100px)/repeat(4, 100px);
+            grid-gap: 5px;
+
+        }
+
+        .item {
+            background-color: #555;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .item1,
+        .item2,
+        .item3,
+        .item4,
+        .item5 {
+            background-color: brown;
+        }
+
+        .item16 {
+            background-color: blue;
+        }
+
+        p {
+            background-color: #ececec;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cal">
+
+
+        <p>輸入值
+            <span id="input"></span>
+        </p>
+        <div class="gridBox">
+            <div class="item item1">+</div>
+            <div class="item item2">-</div>
+            <div class="item item3">*</div>
+            <div class="item item4">/</div>
+            <div class="item item5">=</div>
+            <div class="item item6">1</div>
+            <div class="item item7">2</div>
+            <div class="item item8">3</div>
+            <div class="item item9">4</div>
+            <div class="item item10">5</div>
+            <div class="item item11">6</div>
+            <div class="item item12">7</div>
+            <div class="item item13">8</div>
+            <div class="item item14">9</div>
+            <div class="item item15">0</div>
+            <div class="item item16">清除</div>
+        </div>
+
+        <p>輸出值
+            <span id="output"></span>
+        </p>
+    </div>
+    <script>
+        var input = document.getElementById("input");
+        var output = document.getElementById("output");
+        var item = document.getElementsByClassName("item");
+        var str = "";
+        for (var i = 0; i < item.length; i++) {
+            item[i].onclick = function () {
+                str += this.innerHTML;
+                input.innerHTML = str;
+            }
+        }
+        item[4].onclick = function () {
+            output.innerHTML = eval(str);
+        }
+        item[15].onclick = function () {
+            str = "";
+            input.innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>
